@@ -1,0 +1,15 @@
+	   body {
+           margin-top: -18px;
+        }
+#logo {
+	position:absolute;
+	    width: 150px;
+}
+#menu
+{
+	background:url(../images/bg.jpg) no-repeat;
+    background-size: cover;
+}
+.navbar-brand, .navbar-nav > li > a {
+    padding: 20px;
+}
