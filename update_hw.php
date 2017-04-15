@@ -23,17 +23,23 @@
                     <label for="pId">Product id:</label>
                     <input type="text" class="form-control" name="pId" id="pId">
                 </div>
-
+				<div class="form-group">
+                    <label for="pDealer">Purchase Dealer:</label>
+                    <input type="text" class="form-control" name="pDealer" id="pDealer">
+                </div>
+				
                 <div class="form-group">
                     <label for="dPurchase">Date of purchase:</label>
                     <input type="text" class="form-control datepicker" name="dPurchase" id="dPurchase">
                 </div>
-
+				
 				<div class="form-group">
                     <label for="dTermination">Projected Date of Termination</label>
                     <input type="text" class="form-control datepicker" name="dTermination" id="dTermination">
                 </div>
 				
+         
+
                 <div class="form-group">
                     <label for="remark">Remark</label>
                     <textarea id="remark" name="remark" class="form-control" rows="5"></textarea>
@@ -44,20 +50,10 @@
         <div class="col-lg-6 col-sm-12 col-xs-12">
             <form>
                 <div class="form-group">
-                    <div style="position:relative;">
-                        <a class='btn btn-default uploadBtn' href='javascript:;' style=''>
-						Upload Image.
-						<input type="file" class="btn-file" name="file_source" size="40" onchange='$("#upload-file-info").html($(this).val());' >
-					</a> &nbsp;
-                        <span class='label label-info' id="upload-file-info"></span>
-                    </div>
+                    <img src="images/bg.jpg" class="productThumb">
 
                 </div>
-
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea id="description" Dame="description" class="form-control" rows="5"></textarea>
-                </div>
+                      
 
                 <div class="form-group">
                     <label for="status">Status:</label>
@@ -72,10 +68,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="pDealer">Purchase Dealer:</label>
-                    <input type="text" class="form-control" name="pDealer" id="pDealer">
+                    <label for="dRepair">Date of repair</label>
+                    <input type="text" class="form-control datepicker" name="dRepair" id="dRepair">
                 </div>
-
+				<div class="form-group">
+                    <label for="rDealer">Repair Dealer:</label>
+                    <input type="text" class="form-control" name="pDealer" id="rDealer">
+                </div>
+					
                 <div class="form-group">
                     <label for="user">Assigned User</label>
                     <select class="form-control" id="user">
@@ -86,6 +86,10 @@
                 <div class="form-group">
                     <label for="aDate">Assigned Date</label>
                     <input type="text" class="form-control datepicker" name="aDate" id="aDate">
+                </div>
+				<div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" Dame="description" class="form-control" rows="5"></textarea>
                 </div>
 
         </div>
