@@ -1,6 +1,7 @@
-	   body {
-           margin-top: -18px;
-        }
+body
+{
+	font-family: 'Roboto', sans-serif;
+}
 #logo {
 	position:absolute;
 	    width: 150px;
@@ -9,7 +10,39 @@
 {
 	background:url(../images/bg.jpg) no-repeat;
     background-size: cover;
+	
 }
 .navbar-brand, .navbar-nav > li > a {
     padding: 20px;
+}
+.navbar-toggle {
+    background: #fff;
+}
+.navbar-toggle .icon-bar {
+
+    background: #333;
+}
+
+.btn-file {
+    position:absolute;
+	z-index:2;top:0;left:0;
+	filter: alpha(opacity=0);
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	opacity:0;
+	background-color:transparent;
+	color:transparent;
+}
+.actionButton
+{
+	margin-top:20px;
+	min-width:70px;
+}
+.uploadBtn
+{
+	margin-top: 23px;
+}
+.page-header *
+{
+	font-weight:700;
+	color:#333;
 }
