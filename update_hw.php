@@ -1,6 +1,6 @@
 <?php include ( "header.html"); ?>
 <div class="col-lg-offset-2 col-lg-8 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
-	<div class="row text-center page-header"><h2>Add New Hardware</h2></div>
+	<div class="row text-center page-header"><h2>Update Hardware</h2></div>
     <div class="row">
         <div class="col-lg-6 col-sm-12 col-xs-12">
             <form action="server.php" method="post" enctype="multipart/form-data">
