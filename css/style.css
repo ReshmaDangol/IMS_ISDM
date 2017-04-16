@@ -51,3 +51,77 @@ body
 	height:133px;
 	
 }
+
+h3 {
+  margin-top: 0;
+}
+
+.badge {
+  background-color: #777;
+}
+
+.tabs-left { margin-top: 3rem; }
+
+.nav-tabs {
+  float: left;
+  border-bottom: 0;
+}
+
+ .nav-tabs li {
+    float: none;
+    margin: 0;
+  } 
+  .nav-tabs li  a {
+      margin-right: 0;
+      border: 0;
+          background:  #e0e0e0;   border-radius: 3px;
+		  color:#333;
+  }
+  
+   .nav-tabs li  a:hover {
+        background-color: #ccc;
+      }
+   
+  .glyphicon {
+    color: #333;
+  }
+  
+  .active .glyphicon {
+    color: #fff;
+  }
+
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  border:0;
+  
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+	
+		  background-color:#ccc;
+	  }
+
+.tab-content {
+  margin-left: 45px;
+}
+.tab-content  .tab-pane {
+    display: none;
+    background-color: #fff;
+    padding: 1.6rem;
+    overflow-y: auto;
+  }
+  
+.tab-content  .active { display: block; }
+
+
+.list-group {
+  width: 100%;
+} 
+ .list-group .list-group-item {
+    height: 50px;
+ }
+ 
+ .list-group  h4, .list-group span {
+      line-height: 11px;
+    }
+
+

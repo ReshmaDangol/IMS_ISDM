@@ -12,12 +12,37 @@
     <link href="css/morris.css" rel="stylesheet" />
 	<link href="css/style.css" rel="stylesheet" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
+	    <script src="js/jquery.dataTables.min.js"></script>
+    <link href="css/jquery.dataTables.min.css" rel="stylesheet" />
+	
     <script>
         $(function () {
             $(".datepicker").datepicker();          
 
         });
+		
+		var tabsFn = (function() {
+		  
+		  function init() {
+			setHeight();
+		  }
+		  
+		  function setHeight() {
+			var $tabPane = $('.tab-pane'),
+				tabsHeight = $('.nav-tabs').height();
+			
+			$tabPane.css({
+			//  height: tabsHeight
+			});
+		  }
+			
+		  $(init);
+		})();
+
+	$(document).ready(function(){
+		$('.resultTable').DataTable();
+	});
     </script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
 
