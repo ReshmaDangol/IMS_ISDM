@@ -1,7 +1,6 @@
 <div class="col-lg-5  col-md-5 col-sm-12 col-xs-12">
     <form action="server.php" method="post" enctype="multipart/form-data">
         <div class="form-group col-xs-9">
-            <label for="status">Status:</label>
             <select class="form-control" id="status">
                 <option>In-use</option>
                 <option>Available</option>
@@ -11,9 +10,9 @@
                 <option>Terminated</option>
             </select>
         </div>
-		 <div class="form-group col-xs-3">
-		<button type="submit" class="btn btn-primary actionButton">Search</button>
-		</div>
+        <div class="form-group col-xs-3">
+            <button type="submit" class="btn btn-primary ">Search</button>
+        </div>
     </form>
 </div>
 
