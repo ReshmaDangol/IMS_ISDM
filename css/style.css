@@ -97,7 +97,8 @@ h3 {
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
 	
-		  background-color:#ccc;
+		  background: url(../images/bg.jpg);
+		  color:#000;
 	  }
 
 .tab-content {
@@ -124,4 +125,12 @@ h3 {
       line-height: 11px;
     }
 
+.pagination
+{
+	display:block;
+}
 
+.tableArea
+{
+	margin-top:50px;
+}
