@@ -157,3 +157,18 @@ margin-bottom:10px;
 .activeStaff{
 	background:url(../images/bg.jpg);
 }
+
+.btn-primary {
+    background-image: -webkit-linear-gradient(top, #a89260 0%, #a89260 100%);
+    background-image: -o-linear-gradient(top, #a89260 0%, #a89260 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#a89260), to(#a89260));
+    background-image: linear-gradient(to bottom, #a89260 0%, #a89260 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a89260', endColorstr='#a89260', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    background-repeat: repeat-x;
+    border-color: #a89260;
+}
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #6d6041;
+    background-position: 0 35px;
+}

@@ -21,8 +21,12 @@
     <script>
         $(function () {
             $(".datepicker").datepicker();          
-
+			$(".staffInfo").click(function(){
+				$(".activeStaff").removeClass("activeStaff");
+				$(this).addClass("activeStaff");
+			});
         });
+
 		
 		var tabsFn = (function() {
 		  
