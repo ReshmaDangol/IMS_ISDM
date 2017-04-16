@@ -4,13 +4,13 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="tabs-left">
-        <ul class="nav nav-tabs">         
+        <ul class="nav navV nav-tabs nav-tabsV">         
           <li class="active"><a href="#searchStatus" data-toggle="tab">Search By Status</a></li>
           <li><a href="#searchUser" data-toggle="tab">Search By User</a></li>
 		  <li><a href="#searchType" data-toggle="tab">Search By Type</a></li>
 		  <li><a href="#searchDate" data-toggle="tab">Search By Date</a></li>
         </ul>
-        <div class="tab-content">
+        <div class="tab-content tab-contentV">
           <div class="tab-pane active" id="searchStatus">         
             <?php include ( "searchStatus.php"); ?>
           </div>
