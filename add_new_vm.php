@@ -5,9 +5,15 @@
         <div class="row">
             <div class="col-lg-6 col-sm-12 col-xs-12">
                 <form action="server.php" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="vmId">ID No.</label>
-                        <input type="text" class="form-control" name="vmId" id="vmId">
+                    <div class="form-group row">
+						<div class="col-xs-6">
+							<label for="vmId">ID No.</label>
+							<input type="text" class="form-control" name="vmId" id="vmId">
+						</div>
+						<div class="col-xs-6">
+							<label for="createdDate">Created Date</label>
+							<input type="text" class="form-control datepicker" name="createdDate" id="createdDate">
+						</div>
                     </div>
 
                     <div class="form-group row">

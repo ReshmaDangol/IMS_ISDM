@@ -20,6 +20,7 @@
 	<link href="css/style.css" rel="stylesheet" />
     <script>
         $(function () {
+			$('.resultTable').DataTable();
             $(".datepicker").datepicker();          
 			$(".staffInfo").click(function(){
 				$(".activeStaff").removeClass("activeStaff");
@@ -59,7 +60,7 @@
 		})();
 
 	$(document).ready(function(){
-		$('.resultTable').DataTable();
+	
 	});
     </script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
