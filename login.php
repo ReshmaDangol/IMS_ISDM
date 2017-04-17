@@ -1,4 +1,9 @@
 <?php include ( "header.html"); ?>
+<script>
+	 $(function () {
+		$('#menu').hide();
+	});
+</script>
 <div class="col-lg-offset-5 col-lg-2 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
 	<div class="wrapper" style="margin-top:100px;">
 		<form action="" method="post" name="Login_Form" class="form-signin">       

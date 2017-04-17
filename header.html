@@ -27,33 +27,7 @@
 				$(this).addClass("activeStaff");
 			});
 			
-			Morris.Donut({
-                            element: hwGraph ,
-                            data: [
-										{ label: 'In-use', value: 20 },
-										{ label: 'Available', value: 10 },
-										{ label: 'Needs Repairing', value: 5 },
-										{ label: 'Sent for Repair', value: 5 },
-										{ label: 'Donated', value: 20 }
-									  ],                          
-                            labelColor: '#000059',
-                            formatter: function (x) { return x }
-                        });
-						
-			Morris.Bar({
-			  element: 'vmGraph',
-			  data: [
-				{x: 'Data Center 1', No_Of_VM: 3},
-				{x: 'Data Center 2', No_Of_VM: 4},
-				{x: 'Data Center 3', No_Of_VM: 3}
-				
-			  ],
-			  xkey: 'x',
-			  ykeys: ['No_Of_VM'],
-			  labels: ['No_Of_VM']
-			});
-        });
-
+			
 		
 		var tabsFn = (function() {		  
 		  function init() {
