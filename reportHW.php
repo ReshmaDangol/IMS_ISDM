@@ -35,7 +35,26 @@
 
         </div>
         <div role="tabpanel" class="tab-pane" id="avaHW">
+			<table class="table resultTable">
+                <thead>
+                    <tr>
+                        <th>SNo</th>
+                        <th>Hardware Name</th>
+                        <th>Assigned User</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="">
+                        <td>1</td>
+                        <td>Philips MC 303</td>
+                        <td>Atsadawat</td>
+                        <td><a href="update.php?id=1234" class="editLink">edit</a>
+                        </td>
+                    </tr>
 
+                </tbody>
+            </table>
 
         </div>
     </div>

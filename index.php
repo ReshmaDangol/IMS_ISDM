@@ -8,6 +8,8 @@
     <div class="row text-center page-header">
         <h2>VM Inventory Overview</h2>
     </div>
-    <div class="row" class="reportVM"> </div>
+    <div class="row" class="reportVM">
+		<?php include ( "reportVM.php"); ?> 
+	</div>
 </div>
 <?php ?>
