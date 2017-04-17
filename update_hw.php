@@ -67,9 +67,19 @@
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="dRepair">Date of repair</label>
-                    <input type="text" class="form-control datepicker" name="dRepair" id="dRepair">
+                <div class="form-group row">
+                    <div class="col-xs-4">
+						<label for="dRepair">Date of repair</label>
+						<input type="text" class="form-control datepicker" name="dRepair" id="dRepair">
+					</div>
+					<div style="position:relative;" class="col-xs-8">
+                        <a class='btn btn-default uploadBtn' href='javascript:;' style=''>
+						Photo of Reciept
+						<input type="file" class="btn-file" name="reciept" size="40" onchange='$("#upload-file-info").html($(this).val());' >
+						</a> &nbsp;
+                        <span class='label label-info' id="upload-file-info"></span>
+                    </div>
+
                 </div>
 				<div class="form-group">
                     <label for="rDealer">Repair Dealer:</label>

@@ -39,7 +39,7 @@ table,.form-control {
 	margin-top:23px;
 	min-width:70px;
 }
-.uploadBtn
+.uploadBtn, .uploadBtn>*
 {
 	margin-top: 23px;
 }
@@ -50,7 +50,7 @@ table,.form-control {
 }
 .productThumb
 {
-	height:133px;
+	height:125px;
 	
 }
 
