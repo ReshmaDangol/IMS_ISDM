@@ -1,10 +1,19 @@
+<script>
+function setHidden()
+{
+	document.getElementById("hiddenField").value = "add_new_vm";
+	alert(document.getElementById("hiddenField").value);
+};
+
+</script>
+
 <?php include ( "header.html"); ?>
     <div class="col-lg-offset-2 col-lg-8 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
         <div class="row text-center page-header">
             <h2>Add Virtual Machine</h2></div>
         <div class="row">
             <div class="col-lg-6 col-sm-12 col-xs-12">
-                <form action="server.php" method="post" enctype="multipart/form-data">
+                <form action="queries.php" method="post" enctype="multipart/form-data">
                     <div class="form-group row">
 						<div class="col-xs-6">
 							<label for="vmId">ID No.</label>
@@ -115,26 +124,22 @@
 
                     <div class="form-group">
                         <label for="status">Status:</label>
-                        <select class="form-control" id="status">
-                            <option>In-use</option>
-                            <option>Available</option>
-                            <option>Needs Repairing</option>
-                            <option>Sent to Repair</option>
-                            <option>Donated</option>
-                            <option>Terminated</option>
+                        <select class="form-control" id="status" name = "status">
+						<?php include "status.php"; ?>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="remarks">Remarks:</label>
-                        <textarea id="remarks" Dame="remarks" class="form-control" rows="5"></textarea>
+                        <textarea id="remarks" name="remarks" class="form-control" rows="5"></textarea>
                     </div>
 
             </div>
         </div>
         <center>
-            <button type="submit" class="btn btn-primary actionButton">Save</button>
+            <button type="submit" class="btn btn-primary actionButton" onClick = "setHidden();">Save</button>
             <button type="cancel" class="btn btn-default actionButton">Cancel</button>
+			<input type="hidden" id="hiddenField" name = "hiddenField" value="">
         </center>
         </form>
     </div>

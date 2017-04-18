@@ -1,13 +1,24 @@
+<script>
+function setHidden()
+{
+	document.getElementById("hiddenField").value = "add_new_hw";
+};
+
+</script>
+
 <?php include ( "header.html"); ?>
     <div class="col-lg-offset-2 col-lg-8 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
         <div class="row text-center page-header">
             <h2>Add New Hardware</h2></div>
         <div class="row">
             <div class="col-lg-6 col-sm-12 col-xs-12">
-                <form action="server.php" method="post" enctype="multipart/form-data">
+                <form action="queries.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="type">Product Type:</label>
-                        <input type="text" class="form-control" name="type" id="type">
+                        <label for="type">Product Type:</label>					
+                        <select class="form-control" id="type" name="type">
+						<?php include "hardwareType.php"; ?>
+                        </select>
+                        <!-- <input type="text" class="form-control" name="type" id="type"> -->
                     </div>
 
                     <div class="form-group">
@@ -57,18 +68,13 @@
 
                     <div class="form-group">
                         <label for="description">Description:</label>
-                        <textarea id="description" Dame="description" class="form-control" rows="5"></textarea>
+                        <textarea id="description" name="description" class="form-control" rows="5"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="status">Status:</label>
-                        <select class="form-control" id="status">
-                            <option>In-use</option>
-                            <option>Available</option>
-                            <option>Needs Repairing</option>
-                            <option>Sent to Repair</option>
-                            <option>Donated</option>
-                            <option>Terminated</option>
+                        <select class="form-control" id="status" name="status">
+						<?php include "status.php"; ?>
                         </select>
                     </div>
 
@@ -79,8 +85,8 @@
 
                     <div class="form-group">
                         <label for="user">Assigned User</label>
-                        <select class="form-control" id="user">
-                            <option>Atsadawat</option>
+                        <select class="form-control" id="user" name="user">
+                            <?php include "staffs.php"; ?>
                         </select>
                     </div>
 
@@ -92,8 +98,9 @@
             </div>
         </div>
         <center>
-            <button type="submit" class="btn btn-primary actionButton">Save</button>
+            <button type="submit" class="btn btn-primary actionButton" onClick = "setHidden();">Save</button>
             <button type="cancel" class="btn btn-default actionButton">Cancel</button>
+			<input type="hidden" id="hiddenField" name = "hiddenField" value="">
         </center>
         </form>
     </div>

@@ -2,12 +2,7 @@
     <form action="server.php" method="post" enctype="multipart/form-data">
         <div class="form-group col-xs-9">
             <select class="form-control" id="status">
-                <option>In-use</option>
-                <option>Available</option>
-                <option>Needs Repairing</option>
-                <option>Sent to Repair</option>
-                <option>Donated</option>
-                <option>Terminated</option>
+                <?php include 'status.php'; ?>
             </select>
         </div>
         <div class="form-group col-xs-3">
