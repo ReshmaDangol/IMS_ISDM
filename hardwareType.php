@@ -1,4 +1,6 @@
-<?php include 'connection.php';
+<?php 
+
+include 'connection.php';
 
 //Code to fetch all the options from the HardwareTypes Table
 $sql = "SELECT id,type FROM hardwareTypes";

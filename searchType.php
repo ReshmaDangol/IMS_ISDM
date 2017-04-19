@@ -2,12 +2,14 @@
     <form action="server.php" method="post" enctype="multipart/form-data">
         <div class="form-group col-xs-9">
             <select class="form-control" id="type">
-                <option>Laptop</option>
-                <option>VOIP</option>
+               <!-- <option>Laptop</option>
+                <option>VOIP</option> -->
+				<option></option>
+				<?php include 'hardwareType.php' ?>
             </select>
         </div>
         <div class="form-group col-xs-3">
-            <button type="submit" class="btn btn-primary ">Search</button>
+            <!-- <button type="submit" class="btn btn-primary ">Search</button> -->
         </div>
     </form>
 </div>
@@ -23,16 +25,7 @@
                 <th>Edit</th>
             </tr>
         </thead>
-        <tbody>
-            <tr class="">
-                <td>1</td>
-                <td>VOIP</td>
-                <td>Philips MC 303</td>
-                <td>Atsadawat</td>
-                <td><a href="update.php?id=1234" class="editLink">edit</a>
-                </td>
-            </tr>
-
+        <tbody id="typeSearchResult">
         </tbody>
     </table>
 </div>

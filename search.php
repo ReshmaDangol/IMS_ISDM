@@ -29,3 +29,46 @@
   </div><!-- /row -->
 </div><!-- /container -->
 </div>
+
+<script>
+ $(function () {
+	 $("#status").change(function(){
+		 var statusID=$('#status').val();
+		 if(statusID == "")
+			 return;
+		 $.get("searchStatusQryResult.php?searchType=status&statusID="+statusID,function(data){
+			 $("#statusSearchResult").html(data);
+			 //$('.resultTable').DataTable();
+		 })
+	 });
+ 
+	$(".staffInfo").click(function(){
+		var staffID = $(this).data('staff');
+		//alert(staffID);
+		$.get("searchStatusQryResult.php?searchType=assignedUser&staffID="+staffID,function(data){
+			$("#userSearchResult").html(data);
+		})
+	});
+	
+	$("#type").change(function(){
+		var typeID = $('#type').val();
+		
+		if(typeID == "")
+			return;
+		$.get("searchStatusQryResult.php?searchType=type&typeID="+typeID,function(data){
+			$("#typeSearchResult").html(data);
+		})
+	});
+	
+	$("#date").change(function(){
+		var dateVal = $('#date').val();
+		//alert('Clicked');
+		if(dateVal == "")
+			return;	
+		
+		$.get("searchStatusQryResult.php?searchDateType="+$('#dType').val()+"&searchType=date&dateVal="+dateVal,function(data){
+			$("#dateSearchResult").html(data);
+		})
+	});
+});
+</script>
