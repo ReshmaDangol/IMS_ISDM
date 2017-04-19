@@ -82,6 +82,15 @@ function setHidden()
                         <label for="pDealer">Purchase Dealer:</label>
                         <input type="text" class="form-control" name="pDealer" id="pDealer">
                     </div>
+					<div class="form-group">
+						<div style="position:relative;">
+							<a class='btn btn-default uploadBtn' href='javascript:;' style=''>
+							Photo of Purchase Reciept
+							<input type="file" class="btn-file" name="pReciept" size="40" onchange='$("#upload-file-info").html($(this).val());' >
+							</a> &nbsp;
+							<span class='label label-info' id="upload-file-info"></span>
+						</div>
+					</div>
 
                     <div class="form-group">
                         <label for="user">Assigned User</label>
