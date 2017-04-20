@@ -26,7 +26,7 @@ switch($_REQUEST['searchType']){
 
 		while($row = mysql_fetch_array($result))
 		{
-			echo "<tr class=''><td>{$row['productID']}</td><td>{$row['type']}</td><td>{$row['itemName']}</td><td>{$row['firstName']}</td><td>"
+			echo "<tr class=''><td>{$row['productID']}</td><td>{$row['type']}</td><td>{$row['itemName']}</td><td>{$row['firstName']} "
 			."{$row['lastName']}</td><td><a href='update_hw.php?id={$row['itemID']}' class=editLink'>edit</a></td></tr>";
 		}
 	break;
@@ -145,6 +145,110 @@ switch($_REQUEST['searchType']){
 		
 		}
 		
+		break;
+		
+	case 'status':
+
+		$fetchedStatusID = $_REQUEST['statusID'];
+
+		//Code to query the database to filter out only 'In-Use' devices
+		$sql = "select itemID, productID, type, itemName, firstName, lastName, status  from"
+				." (select I.itemID,I.productID, I.itemName, I.status, AH.hardwareID, AH.StaffID from Items as I left join assignedHistory as AH"
+				." on I.itemID = AH.hardwareID) as tbl1	LEFT JOIN (select H.id, H.hardwaretype, HT.type from hardwares as H, hardwareTypes as HT"
+				." where H.hardwaretype = HT.id) tbl2 on tbl1.itemID = tbl2.id LEFT JOIN staffs as S on tbl1.staffID = S.ID" 
+				." where status =".$fetchedStatusID;
+				
+		$result = mysql_query($sql);
+
+		if(!$result)
+		{
+			echo "Problem in SQL".$sql;
+		}
+
+		$returnStatusSearchResults = "";
+
+		while($row = mysql_fetch_array($result))
+		{
+			echo "<tr class=''><td>{$row['productID']}</td><td>{$row['type']}</td><td>{$row['itemName']}</td><td>{$row['firstName']} "
+			."{$row['lastName']}</td><td><a href='update_hw.php?id={$row['itemID']}' class=editLink'>edit</a></td></tr>";
+		}
+	break;
+	
+	case 'listInUseItems' : 
+		
+		$fetchedStatusID = $_REQUEST['statusID'];
+		
+		$sql = "select itemID, productID, type, itemName, firstName, lastName, status  from (select I.itemID,I.productID, I.itemName, "
+				." I.status, AH.hardwareID, AH.StaffID from Items as I left join assignedHistory as AH on I.itemID = AH.hardwareID) as tbl1"	
+				." LEFT JOIN (select H.id, H.hardwaretype, HT.type from hardwares as H, hardwareTypes as HT"
+				." where H.hardwaretype = HT.id) tbl2 on tbl1.itemID = tbl2.id LEFT JOIN staffs as S on tbl1.staffID = S.ID"
+				." where status =".$fetchedStatusID;
+		
+		echo $sql;
+		$result = mysql_query($sql);
+		
+		if(!$result)
+		{
+			echo "Problem in sql".$sql;
+		}
+		
+	
+		while($row = mysql_fetch_array($result))
+		{
+		
+		echo "<tr class=''><td>{$row['productID']}</td><td>{$row['itemName']}</td><td>{$row['firstName']} {$row['lastName']}</td>"
+                ."<td><a href='update_hw.php?id={$row['itemID']}' class='editLink'>edit</a></td></tr>";
+		
+		}
+		break;
+		
+		case 'listAvailableItems' : 
+		
+		$fetchedStatusID = $_REQUEST['statusID'];
+		
+		$sql = "select itemID, productID, type, itemName, firstName, lastName, status  from (select I.itemID,I.productID, I.itemName, "
+				." I.status, AH.hardwareID, AH.StaffID from Items as I left join assignedHistory as AH on I.itemID = AH.hardwareID) as tbl1"	
+				." LEFT JOIN (select H.id, H.hardwaretype, HT.type from hardwares as H, hardwareTypes as HT"
+				." where H.hardwaretype = HT.id) tbl2 on tbl1.itemID = tbl2.id LEFT JOIN staffs as S on tbl1.staffID = S.ID"
+				." where status =".$fetchedStatusID;
+		
+		//echo $sql;
+		$result = mysql_query($sql);
+		
+		if(!$result)
+		{
+			echo "Problem in sql".$sql;
+		}
+		
+	
+		while($row = mysql_fetch_array($result))
+		{
+		
+		echo "<tr class=''><td>{$row['productID']}</td><td>{$row['itemName']}</td><td>{$row['firstName']} {$row['lastName']}</td>"
+                ."<td><a href='update_hw.php?id={$row['itemID']}' class='editLink'>edit</a></td></tr>";
+		
+		}
+		break;
+		
+		case 'listAllVm' : 
+		
+		$sql = "select I.itemid, I.productID, V.ipAddress, V.hostname, V.dataCenter from Items as I, VM as V where I.itemid = V.ID";
+		echo $sql;
+		$result = mysql_query($sql);
+		
+		if(!$result)
+		{
+			echo "Problem in sql".$sql;
+		}
+		
+	
+		while($row = mysql_fetch_array($result))
+		{
+		
+		echo "<tr class=''><td>{$row['productID']}</td><td>{$row['ipAddress']}</td><td>{$row['hostname']} </td><td>{$row['dataCenter']}</td>"
+                ."<td><a href='update_vm.php?id={$row['itemid']}' class='editLink'>edit</a></td></tr>";
+		
+		}
 		break;
 }
 ?>

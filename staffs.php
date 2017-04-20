@@ -7,9 +7,13 @@ $sql = "SELECT id,firstName,lastName FROM staffs";
 $result = mysql_query($sql);
 
 while($row = mysql_fetch_array($result))
-{
-	echo "<option value = '{$row['id']}'>{$row['firstName']}&nbsp{$row['lastName']}</option>";
-	
+{	
+	if( $row['firstName']!='None')
+		echo "<option value = '{$row['id']}'>{$row['firstName']}&nbsp{$row['lastName']}</option>";	
+	else
+	{
+		
+	}
 }
 ?>
 
