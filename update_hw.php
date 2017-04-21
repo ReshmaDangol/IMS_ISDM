@@ -103,12 +103,16 @@ $resultStaffInfo = mysql_query($sqlStaffInfo);
 				
                 <div class="form-group">
                     <label for="dPurchase">Date of purchase:</label>
-                    <input type="text" class="form-control datepicker" name="dPurchase" id="dPurchase" value ="<?php echo $dateOfInitialization ; ?>">
+                    <input type="text" class="form-control datepicker" name="dPurchase" id="dPurchase" value ="<?php 
+					$myDateTime = DateTime::createFromFormat('Y-m-d', $dateOfInitialization);
+					$newDateString = $myDateTime->format('m/d/Y'); echo $newDateString; ?>">
                 </div>
 				
 				<div class="form-group">
                     <label for="dTermination">Projected Date of Termination</label>
-                    <input type="text" class="form-control datepicker" name="dTermination" id="dTermination" value ="<?php echo $projectedDateOfTermination  ; ?>">
+                    <input type="text" class="form-control datepicker" name="dTermination" id="dTermination" value ="<?php 
+					$myDateTime = DateTime::createFromFormat('Y-m-d', $projectedDateOfTermination);
+					$newDateString = $myDateTime->format('m/d/Y'); echo $newDateString; ?>">
                 </div>
 				
          
@@ -178,13 +182,19 @@ $resultStaffInfo = mysql_query($sqlStaffInfo);
 								
 							}
 							?>
-							<option value=0>None</option>
+							
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="aDate">Assigned Date</label>
-                    <input type="text" class="form-control datepicker" name="aDate" id="aDate" value=<?php echo $assignedDate ?>>
+                    <input type="text" class="form-control datepicker" name="aDate" id="aDate" value=<?php 
+					if($assignedDate){
+					$myDateTime = DateTime::createFromFormat('Y-m-d', $assignedDate);
+					$newDateString = $myDateTime->format('m/d/Y'); echo $newDateString;
+					}
+					else echo "";
+					?>>
                 </div>
 				<div class="form-group">
                     <label for="description">Description:</label>

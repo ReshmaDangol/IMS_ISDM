@@ -70,7 +70,7 @@ switch($_REQUEST['hiddenField']){
 		
 
 		//SQL to insert in AssignedHistory table	
-		if($assignedUser!= 0)
+		if($assignedUser!= 1)
 		{	
 			$sql6 = "INSERT INTO `ims_dotarai`.`assignedHistory` (hardwareID, staffID, assignedDate) VALUES ('$maxItemID','$assignedUser' , STR_TO_DATE('$assignedDate','%m/%d/%Y'))";
 			$retval6 = mysql_query($sql6, $link);
@@ -157,8 +157,8 @@ switch($_REQUEST['hiddenField']){
 		
 		//SQL to insert in VM table	
 		$sql4 = "INSERT INTO `ims_dotarai`.`vm` (ID, hostname, datacenter, OSinstalled, softwaresInstalled, RAM, HDD, CPU, ipAddress, subnet,".
-				"gateway, virtualMachine, softwareVersion, OSVersion, vmID )VALUES ('$maxItemID','$hName' , '$dCenter', '$osName', '$softwareName',".
-				" '$ram', '$hdd', '$cpu', '$ipAddr', '$subnet', '$gateway', '$vm', '$softwareVersion', '$osVersion', '$vmId')";
+				"gateway, virtualMachine, softwareVersion, OSVersion )VALUES ('$maxItemID','$hName' , '$dCenter', '$osName', '$softwareName',".
+				" '$ram', '$hdd', '$cpu', '$ipAddr', '$subnet', '$gateway', '$vm', '$softwareVersion', '$osVersion')";
 		$retval4 = mysql_query($sql4, $link);
 
 		if(! $retval4)
@@ -177,6 +177,7 @@ switch($_REQUEST['hiddenField']){
 			mysql_rollback($link);
 			echo "All queries did not run successfully and rolledback";
 		}
+		break;
 		
 		/*****************/
 		case 'update_hw' :
@@ -210,7 +211,7 @@ switch($_REQUEST['hiddenField']){
 				." dateOfInitialization = STR_TO_DATE('$dateOfPurchase', '%m/%d/%Y'), purchasedDealer = '$pDealer',"
 				." projectedDateOfTermination= STR_TO_DATE('$projDateOfTermination',"
 				." '%m/%d/%Y'), Status = '$status', productID = '$productID', remarks = '$remark' where itemID = ".$itemID;
-
+				
 		$retval2 = mysql_query($sql2, $link);
 		if(! $retval2)
 		{
@@ -231,16 +232,31 @@ switch($_REQUEST['hiddenField']){
 		
 
 		//SQL to update in AssignedHistory table	
-		if($assignedUser!= 0)
-		{	
-			$sql6 = "update `ims_dotarai`.`assignedHistory` set staffID = '$assignedUser'," 
-					." assignedDate = STR_TO_DATE('$assignedDate','%m/%d/%Y') where hardwareID=".$itemID;
+		if($assignedUser!= 1)
+		{ 
+			$sql6 = "INSERT INTO assignedHistory (hardwareID, staffID, assignedDate) VALUES ($itemID, $assignedUser,"
+			." STR_TO_DATE('$assignedDate','%m/%d/%Y')) ON DUPLICATE KEY UPDATE "
+			." staffID=".$assignedUser.", assignedDate=STR_TO_DATE('$assignedDate','%m/%d/%Y')";
 			$retval6 = mysql_query($sql6, $link);
 
 			if(! $retval6)
 			{
 				$flag = false;
 				die( "ERROR: Could not execute $sql6" . mysql_error($link));
+			}
+			
+		echo "<br>Assigned User is : ".$assignedUser;
+		echo "<br>$sql6";
+		}
+		else if($assignedUser == 1)
+		{
+			$sql7 = "UPDATE assignedHistory set staffID =1 , assignedDate = NULL ";
+			$retval7 = mysql_query($sql7, $link);
+			
+			if(!$retval7)
+			{
+				$flag = false;
+				die("ERROR: Could not execute $sql6" . mysql_error($link));
 			}
 		}
 
@@ -257,7 +273,87 @@ switch($_REQUEST['hiddenField']){
 			
 		echo '<meta http-equiv="refresh" content="=0;URL=update_hw.php?id=64" />';
 		break;
-	
+		
+		/*****************/
+	case 'update_vm' :
+
+		if ($link)
+		{
+			mysql_query("SET AUTOCOMMIT=0", $link);
+			echo "Connection Successful";
+		}
+		else
+			die ("Connection not successful" .mysql_connect_error());
+		
+		$flag = true; //$flag to check if there is any error thrown by any of the SQL stmnts so that we can rollback the entire transaction
+
+		$itemID = $_REQUEST['hiddenFieldItemID'];
+		$vmId = $_REQUEST['vmId'];
+		$dateOfInitialization = $_REQUEST['createdDate'];
+		$hName = $_REQUEST['hName'];
+		$dCenter = $_REQUEST['dCenter'];
+		$osName = $_REQUEST['osName'];
+		$osVersion = $_REQUEST['osVersion'];
+		$softwareName = $_REQUEST['sName'];
+		$softwareVersion = $_REQUEST['sVersion'];
+		$ram = $_REQUEST['ram'];
+		$hdd = $_REQUEST['hdd'];
+		$cpu = $_REQUEST['cpu'];
+		$description = $_REQUEST['description'];
+		$ipAddr = $_REQUEST['ipAddr'];
+		$subnet = $_REQUEST['subnet'];
+		$gateway = $_REQUEST['gateway'];
+		$vm = $_REQUEST['vm'];
+		$pDealer = $_REQUEST['pDealer'];
+		$projectedDateOfTermination = $_REQUEST['dTermination'];
+		$status = $_REQUEST['status'];
+		$remarks = $_REQUEST['remarks'];
+
+		//echo "Item ID : ".$itemID." </br>";
+		//SQL to Update in Items table
+		$sql2 = "update `ims_dotarai`.`items` set itemName ='$vm',description = '$description',"
+				." dateOfInitialization = STR_TO_DATE('$dateOfInitialization', '%m/%d/%Y'), purchasedDealer = '$pDealer',"
+				." projectedDateOfTermination= STR_TO_DATE('$projectedDateOfTermination',"
+				." '%m/%d/%Y'), Status = '$status', productID = '$vmId', remarks = '$remarks' where itemID =".$itemID;
+		
+		//echo $sql2;
+				
+		$retval2 = mysql_query($sql2, $link);
+		if(! $retval2)
+		{
+			$flag = false;
+			die( "ERROR: Could not execute $sql2" . mysql_error($link));
+		}	
+		//echo $sql2;
+
+		//SQL to update in Hardwares table	
+		$sql4 = "UPDATE `ims_dotarai`.`vm` SET hostname = '$hName', datacenter = '$dCenter', OSinstalled = '$osName', "
+				." softwaresInstalled = '$softwareName', RAM = '$ram' , HDD = '$hdd' , CPU ='$cpu' , ipAddress = '$ipAddr' ,"
+				." subnet = '$subnet', gateway = '$gateway', virtualMachine = '$vm', softwareVersion = '$softwareVersion' ,"
+				." OSVersion = '$osVersion' where ID =".$itemID;
+		$retval4 = mysql_query($sql4, $link);
+		
+		//echo $sql4;
+		
+		if(! $retval4)
+		{
+			$flag = false;
+			die( "ERROR: Could not execute $sql4" . mysql_error($link));
+		}
+
+		if($flag)
+			{
+				mysql_query("commit", $link);
+				echo "All queries ran successfully";
+			}
+		else
+			{
+				mysql_rollback($link);
+				echo "All queries were rolled back";
+			}
+			
+		echo '<meta http-equiv="refresh" content="=0;URL=update_hw.php?id=64" />';
+		break;
 		
 		mysql_close($link);
 		

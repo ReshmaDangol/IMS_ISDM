@@ -24,8 +24,6 @@
             </tr>
         </thead>
         <tbody id ="statusSearchResult">
-			
-
         </tbody>
     </table>
 </div>

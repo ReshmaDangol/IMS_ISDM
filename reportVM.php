@@ -10,15 +10,8 @@
                         <th>Edit</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="">
-                        <td>1</td>
-                        <td>123.345.567.64</td>
-                        <td>XX</td>
-						<td>XX</td>
-                        <td><a href="update.php?id=1234" class="editLink">edit</a>
-                        </td>
-                    </tr>
+                <tbody id="homeListAllVm">
+                    
 
                 </tbody>
             </table>
@@ -29,3 +22,18 @@
 	
     <div id="vmGraph"></div>
 </div>
+
+<script>
+$(function () {
+$(document).ready(function() {
+    //$("#statusTabBtnInUse").trigger('click');
+	
+	$(function () {
+		$.get("searchStatusQryResult.php?searchType=listAllVm",function(data){
+				$("#homeListAllVm").html(data);
+				});	
+			});
+		});
+});
+	
+</script>

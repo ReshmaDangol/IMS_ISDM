@@ -18,7 +18,7 @@ $result2 = mysql_query($sql2);
     </div> -->
     <?php // } ?>
 	<?php while($row2 = mysql_fetch_array($result2)){ ?>
-    <?php if($row2['id']!=9) { ?>
+    <?php if($row2['firstName']!='None') { ?>
 	<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 staffInfo" data-staff=<?php echo $row2['id'];?> >
 		<img src="images/staff.png" class="staffThumb" />
         <div class="stafffName text-center"><?php echo "<b>".$row2['firstName']." ".$row2['lastName']."</b>"; ?></div>
