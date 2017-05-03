@@ -250,5 +250,34 @@ switch($_REQUEST['searchType']){
 		
 		}
 		break;
+		
+		case 'reportHW' : 
+			$hwType = $_REQUEST['type'];
+			$sql = "select DISTINCT Status, status.Name as type, count(*) as total from items, status,hardwares WHERE items.Status=status.ID and
+			hardwares.hardwareType ={$hwType} and hardwares.ID=itemID GROUP by status";
+			//echo $sql;
+			$result = mysql_query($sql);
+			$arr=[];
+			$i=0;
+			while($row = mysql_fetch_array($result))
+			{
+				$arr[$i]['label']=$row['type'];
+				$arr[$i++]['value']=$row['total'];
+			}
+			echo json_encode($arr);
+			break;
+		case 'reportVM':
+			$sql = "SELECT DISTINCT dataCenter, count(*) as total from vm GROUP by dataCenter";
+			$result = mysql_query($sql);
+			$arr=[];
+			$i=0;
+			while($row = mysql_fetch_array($result))
+			{
+				$arr[$i]['label']=$row['dataCenter'];
+				$arr[$i++]['No_Of_VM']=$row['total'];
+			}
+			echo json_encode($arr);
+		
+		break;
 }
 ?>

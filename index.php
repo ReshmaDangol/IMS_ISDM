@@ -3,32 +3,45 @@
 body{margin-top:-17px;}
 </style>
 <script>
-	 $(function () {
-		Morris.Donut({
+$(function () {
+$(document).ready(function() {
+    $("#statusTabBtnInUse").trigger('click');
+	
+	$('#typeHW').change(function(){		
+		loadHWGraph();						
+	});
+});
+});	
+function loadHWGraph()
+{
+	var val = $('#typeHW').val();
+		$('#hwGraph').remove();
+		 $.get("searchStatusQryResult.php?searchType=reportHW&type="+val,function(data){
+			 var data = $.parseJSON(data);
+			 $("#hwGraphArea").append("<div id='hwGraph'></div>");
+			 Morris.Donut({
                             element: hwGraph ,
-                            data: [
-										{ label: 'In-use', value: 20 },
-										{ label: 'Available', value: 10 },
-										{ label: 'Needs Repairing', value: 5 },
-										{ label: 'Sent for Repair', value: 5 },
-										{ label: 'Donated', value: 20 }
-									  ],                          
+                            data: data,                          
                             labelColor: '#000059',
-                            formatter: function (x) { return x }
+                            formatter: function (x) { return x },
+							resize: true
                         });
-						
-			Morris.Bar({
-			  element: 'vmGraph',
-			  data: [
-				{x: 'Data Center 1', No_Of_VM: 3},
-				{x: 'Data Center 2', No_Of_VM: 4},
-				{x: 'Data Center 3', No_Of_VM: 3}
-				
-			  ],
-			  xkey: 'x',
-			  ykeys: ['No_Of_VM'],
-			  labels: ['No_Of_VM']
-			});
+		 })
+}
+
+	 $(function () {
+		
+			$('#typeHW').val(2).trigger('change');loadHWGraph();
+			 $.get("searchStatusQryResult.php?searchType=reportVM",function(data){
+				var data = $.parseJSON(data);
+				Morris.Bar({
+				  element: 'vmGraph',
+				  data: data,
+				  xkey: 'label',
+				  ykeys: ['No_Of_VM'],
+				  labels: ['No_Of_VM']
+				});
+			 });
         });
 
 

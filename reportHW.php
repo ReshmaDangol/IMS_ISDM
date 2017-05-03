@@ -49,26 +49,18 @@
 	<form action="server.php" method="post" enctype="multipart/form-data"  style="margin-top:54px;">
 	<div class="row">
 		<div class="form-group col-xs-9">
-		<select class="form-control" id="type">
-			<option>Laptop</option>
-			<option>VOIP</option>
+		<select class="form-control" id="typeHW">
+				<?php include "hardwareType.php"; ?>
 		</select>
-		</div>
-		<div class="form-group col-xs-3">
-			<button type="submit" class="btn btn-primary ">Search</button>
-		</div>
+		</div>	
 		</div>
 	</form>
-    <div id="hwGraph"></div>
+    <div id="hwGraphArea"><div id="hwGraph"></div></div>
 </div>
 
 <script>
 
-$(function () {
-$(document).ready(function() {
-    $("#statusTabBtnInUse").trigger('click');
-});
-});	
+
 
 $(function () {
 	$('#statusTabBtnInUse').click(function(){
