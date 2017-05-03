@@ -16,7 +16,7 @@ $boolEdit = "true";
 
 $updateVM_SQL = "select I.itemID, I.productID, I.dateOfInitialization, I.description,I.purchasedDealer, I.projectedDateOfTermination," 
 				." I.status, I.remarks, V.hostname, V.dataCenter, V.OSInstalled, V.OSVersion, V.softwaresInstalled, V.SoftwareVersion,"
-				." V.RAM, V.HDD, V.CPU, V.ipAddress, V.subnet, V.gateway, V.virtualMachine from items as I , vm as V"
+				." V.RAM, V.HDD, V.CPU, V.ipAddress, V.subnet, V.gateway, V.virtualMachine from Items as I , VM as V"
 				." where I.itemID = V.ID and I.itemID =".$itemID;
 
 $resultUpdateVM = mysql_query($updateVM_SQL);
@@ -47,7 +47,7 @@ while($rowVM = mysql_fetch_array($resultUpdateVM))
 	}
 	
 //Code to fetch all the options from the Status Table
-$sqlStatus = "SELECT id,name FROM STATUS";
+$sqlStatus = "SELECT id,name FROM status";
 $resultStatus = mysql_query($sqlStatus);
 
 ?>

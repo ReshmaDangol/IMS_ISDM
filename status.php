@@ -3,7 +3,7 @@
 include 'connection.php';
 
 //Code to fetch all the options from the Status Table
-$sql = "SELECT id,name FROM STATUS";
+$sql = "SELECT id,name FROM status";
 
 $result = mysql_query($sql);
 

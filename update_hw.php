@@ -40,7 +40,7 @@ while($rowHW = mysql_fetch_array($resultUpdateHW))
 		$projectedDateOfTermination = $rowHW['projectedDateOfTermination'];
 		$remarks = $rowHW['remarks'];
 		$statusID = $rowHW['statusID'];
-		$StaffID = $rowHW['StaffID'];
+		$staffID = $rowHW['staffID'];
 		$assignedDate = $rowHW['assignedDate'];
 		$description = $rowHW['description'];
 		$firstName = $rowHW['firstName'];
@@ -52,7 +52,7 @@ $sqlHwTypes = "SELECT id,type FROM hardwareTypes";
 $resultHwTypes = mysql_query($sqlHwTypes);
 
 //Code to fetch all the options from the Status Table
-$sqlStatus = "SELECT id,name FROM STATUS";
+$sqlStatus = "SELECT id,name FROM status";
 $resultStatus = mysql_query($sqlStatus);
 
 //Code to fetch all the options from the Staffs Table
@@ -173,12 +173,24 @@ $resultStaffInfo = mysql_query($sqlStaffInfo);
                     <select class="form-control" id="user" name="user">
                             <?php //include "staffs.php"; ?>
 							<?php 
+							if ($staffID == null)
+								echo "<option value = 'none' selected = 'selected' >None</option>";
+							
+							else 
+								echo "<option value = 'none'>None</option>";
+
 							while($rowStaffInfo = mysql_fetch_array($resultStaffInfo))
 							{
-								if($rowStaffInfo['id']==$StaffID)
-									echo "<option value = '{$rowStaffInfo['id']}' selected = 'selected' >{$rowStaffInfo['firstName']}&nbsp{$rowStaffInfo['lastName']}</option>";
-								else
+								if($rowStaffInfo['id']==$staffID)
+								{
+										echo "<option value = '{$rowStaffInfo['id']}' selected = 'selected' >{$rowStaffInfo['firstName']}&nbsp{$rowStaffInfo['lastName']}</option>";
+								}
+								
+								else 
 									echo "<option value = '{$rowStaffInfo['id']}'>{$rowStaffInfo['firstName']}&nbsp{$rowStaffInfo['lastName']}</option>";
+									
+									//echo "<option value = '{$rowStaffInfo['id']}'>{$rowStaffInfo['firstName']}&nbsp{$rowStaffInfo['lastName']}</option>";
+									//echo "<option value = 'none'>None</option>";
 								
 							}
 							?>

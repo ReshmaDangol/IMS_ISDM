@@ -34,7 +34,7 @@ switch($_REQUEST['hiddenField']){
 		$assignedDate = $_REQUEST['aDate'];
 
 		//SQL to Insert in Items table
-		$sql2 = "INSERT INTO `ims_dotarai`.`items`(itemName, description, dateOfInitialization, purchasedDealer, projectedDateOfTermination, Status, productID, remarks)"
+		$sql2 = "INSERT INTO `ims_web`.`Items`(itemName, description, dateOfInitialization, purchasedDealer, projectedDateOfTermination, Status, productID, remarks)"
 				."VALUES ('$name','$description',STR_TO_DATE('$dateOfPurchase', '%m/%d/%Y'),'$pDealer',STR_TO_DATE('$projDateOfTermination',"
 				." '%m/%d/%Y'),'$status', '$productID','$remark')";
 
@@ -46,7 +46,7 @@ switch($_REQUEST['hiddenField']){
 		}	
 
 		//SQL to get the itemID of latest entered item in Items table
-		$sql3 = "select max(itemid) as itemID from items";
+		$sql3 = "select max(itemid) as itemID from Items";
 		
 		$retval3 = mysql_query($sql3, $link);
 		if(! $retval3)
@@ -59,7 +59,7 @@ switch($_REQUEST['hiddenField']){
 		$maxItemID = $row3['itemID'];
 		
 		//SQL to insert in Hardwares table	
-		$sql4 = "INSERT INTO `ims_dotarai`.`hardwares` (ID, MacAddress, hardwareType) VALUES ('$maxItemID','$mac' , '$type')";
+		$sql4 = "INSERT INTO `ims_web`.`hardwares` (ID, MacAddress, hardwareType) VALUES ('$maxItemID','$mac' , '$type')";
 		$retval4 = mysql_query($sql4, $link);
 		
 		if(! $retval4)
@@ -70,9 +70,9 @@ switch($_REQUEST['hiddenField']){
 		
 
 		//SQL to insert in AssignedHistory table	
-		if($assignedUser!= 1)
+		if($assignedUser!= 'none')
 		{	
-			$sql6 = "INSERT INTO `ims_dotarai`.`assignedHistory` (hardwareID, staffID, assignedDate) VALUES ('$maxItemID','$assignedUser' , STR_TO_DATE('$assignedDate','%m/%d/%Y'))";
+			$sql6 = "INSERT INTO `ims_web`.`assignedHistory` (hardwareID, staffID, assignedDate) VALUES ('$maxItemID','$assignedUser' , STR_TO_DATE('$assignedDate','%m/%d/%Y'))";
 			$retval6 = mysql_query($sql6, $link);
 
 			if(! $retval6)
@@ -128,10 +128,10 @@ switch($_REQUEST['hiddenField']){
 		$status = $_REQUEST['status'];
 		$remarks = $_REQUEST['remarks'];
 		
-		mysql_select_db ( "ims_dotarai",  $link );
+		mysql_select_db ( "ims_web",  $link );
 		
 		//SQL to Insert in Items table
-		$sql2 = "INSERT INTO `ims_dotarai`.`items`(itemName, description, dateOfInitialization, purchasedDealer, projectedDateOfTermination, Status, productID, remarks)"
+		$sql2 = "INSERT INTO `ims_web`.`Items`(itemName, description, dateOfInitialization, purchasedDealer, projectedDateOfTermination, Status, productID, remarks)"
 				."VALUES ('$vm','$description',STR_TO_DATE('$dateOfInitialization', '%m/%d/%Y'),'$pDealer',STR_TO_DATE('$projectedDateOfTermination',"
 				." '%m/%d/%Y'),'$status', '$vmId','$remarks')";
 
@@ -143,7 +143,7 @@ switch($_REQUEST['hiddenField']){
 		}
 		
 		//SQL to get the itemID of latest entered item in Items table
-		$sql3 = "select max(itemid) as itemID from items";
+		$sql3 = "select max(itemid) as itemID from Items";
 		
 		$retval3 = mysql_query($sql3, $link);
 		if(! $retval3)
@@ -156,7 +156,7 @@ switch($_REQUEST['hiddenField']){
 		$maxItemID = $row3['itemID'];
 		
 		//SQL to insert in VM table	
-		$sql4 = "INSERT INTO `ims_dotarai`.`vm` (ID, hostname, datacenter, OSinstalled, softwaresInstalled, RAM, HDD, CPU, ipAddress, subnet,".
+		$sql4 = "INSERT INTO `ims_web`.`VM` (ID, hostname, datacenter, OSinstalled, softwaresInstalled, RAM, HDD, CPU, ipAddress, subnet,".
 				"gateway, virtualMachine, softwareVersion, OSVersion )VALUES ('$maxItemID','$hName' , '$dCenter', '$osName', '$softwareName',".
 				" '$ram', '$hdd', '$cpu', '$ipAddr', '$subnet', '$gateway', '$vm', '$softwareVersion', '$osVersion')";
 		$retval4 = mysql_query($sql4, $link);
@@ -207,7 +207,7 @@ switch($_REQUEST['hiddenField']){
 		$assignedDate = $_REQUEST['aDate'];
 
 		//SQL to Update in Items table
-		$sql2 = "update `ims_dotarai`.`items` set itemName ='$name',description = '$description',"
+		$sql2 = "update `ims_web`.`Items` set itemName ='$name',description = '$description',"
 				." dateOfInitialization = STR_TO_DATE('$dateOfPurchase', '%m/%d/%Y'), purchasedDealer = '$pDealer',"
 				." projectedDateOfTermination= STR_TO_DATE('$projDateOfTermination',"
 				." '%m/%d/%Y'), Status = '$status', productID = '$productID', remarks = '$remark' where itemID = ".$itemID;
@@ -221,7 +221,7 @@ switch($_REQUEST['hiddenField']){
 		//echo $sql2;
 
 		//SQL to update in Hardwares table	
-		$sql4 = "update `ims_dotarai`.`hardwares` set MacAddress = '$mac' , hardwareType = '$type' where id=".$itemID;
+		$sql4 = "update `ims_web`.`hardwares` set MacAddress = '$mac' , hardwareType = '$type' where id=".$itemID;
 		$retval4 = mysql_query($sql4, $link);
 		
 		if(! $retval4)
@@ -232,7 +232,7 @@ switch($_REQUEST['hiddenField']){
 		
 
 		//SQL to update in AssignedHistory table	
-		if($assignedUser!= 1)
+		if($assignedUser!= 'none')
 		{ 
 			$sql6 = "INSERT INTO assignedHistory (hardwareID, staffID, assignedDate) VALUES ($itemID, $assignedUser,"
 			." STR_TO_DATE('$assignedDate','%m/%d/%Y')) ON DUPLICATE KEY UPDATE "
@@ -248,15 +248,15 @@ switch($_REQUEST['hiddenField']){
 		echo "<br>Assigned User is : ".$assignedUser;
 		echo "<br>$sql6";
 		}
-		else if($assignedUser == 1)
+		else if($assignedUser == 'none')
 		{
-			$sql7 = "UPDATE assignedHistory set staffID =1 , assignedDate = NULL ";
+			$sql7 = "UPDATE assignedHistory set staffID = null , assignedDate = NULL WHERE hardwareID =".$itemID;
 			$retval7 = mysql_query($sql7, $link);
 			
 			if(!$retval7)
 			{
 				$flag = false;
-				die("ERROR: Could not execute $sql6" . mysql_error($link));
+				die("ERROR: Could not execute $sql7" . mysql_error($link));
 			}
 		}
 
@@ -311,7 +311,7 @@ switch($_REQUEST['hiddenField']){
 
 		//echo "Item ID : ".$itemID." </br>";
 		//SQL to Update in Items table
-		$sql2 = "update `ims_dotarai`.`items` set itemName ='$vm',description = '$description',"
+		$sql2 = "update `ims_web`.`Items` set itemName ='$vm',description = '$description',"
 				." dateOfInitialization = STR_TO_DATE('$dateOfInitialization', '%m/%d/%Y'), purchasedDealer = '$pDealer',"
 				." projectedDateOfTermination= STR_TO_DATE('$projectedDateOfTermination',"
 				." '%m/%d/%Y'), Status = '$status', productID = '$vmId', remarks = '$remarks' where itemID =".$itemID;
@@ -327,7 +327,7 @@ switch($_REQUEST['hiddenField']){
 		//echo $sql2;
 
 		//SQL to update in Hardwares table	
-		$sql4 = "UPDATE `ims_dotarai`.`vm` SET hostname = '$hName', datacenter = '$dCenter', OSinstalled = '$osName', "
+		$sql4 = "UPDATE `ims_web`.`VM` SET hostname = '$hName', datacenter = '$dCenter', OSinstalled = '$osName', "
 				." softwaresInstalled = '$softwareName', RAM = '$ram' , HDD = '$hdd' , CPU ='$cpu' , ipAddress = '$ipAddr' ,"
 				." subnet = '$subnet', gateway = '$gateway', virtualMachine = '$vm', softwareVersion = '$softwareVersion' ,"
 				." OSVersion = '$osVersion' where ID =".$itemID;
@@ -349,6 +349,7 @@ switch($_REQUEST['hiddenField']){
 		else
 			{
 				mysql_rollback($link);
+				echo mysqli_errno($this->$link);
 				echo "All queries were rolled back";
 			}
 			
