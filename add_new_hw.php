@@ -96,7 +96,7 @@ function setHidden()
                         <label for="user">Assigned User</label>
                         <select class="form-control" id="user" name="user">
                             <?php include "staffs.php"; ?>
-							<option selected = "selected" value=0>None</option>
+							<?php echo "<option value = 'none'>None</option>"; ?>
                         </select>
                     </div>
 

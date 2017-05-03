@@ -19,7 +19,7 @@ switch($_REQUEST['searchType']){
 
 		if(!$result)
 		{
-			echo "Problem in SQL".$sql;
+			echo "<br><br>Problem in SQL</br>".$sql;
 		}
 
 		$returnStatusSearchResults = "";
@@ -35,13 +35,13 @@ switch($_REQUEST['searchType']){
 	
 		$fetchedUserID = $_REQUEST['staffID'];
 		$sql = "select I.itemid,I.productID, I.itemName, I.dateOfInitialization, I.projectedDateOfTermination, S.Name, AH.StaffID"
-			    ." from Items as I , Status as S , assignedHistory as AH where AH.hardwareID = I.itemID and S.ID = I.status and AH.StaffID =".$fetchedUserID;
+			    ." from Items as I , status as S , assignedHistory as AH where AH.hardwareID = I.itemID and S.ID = I.status and AH.StaffID =".$fetchedUserID;
 				
 		$result = mysql_query($sql);
 		
 		if(!$result)
 		{
-			echo "Problem in sql".$sql;
+			echo "<br><br>Problem in SQL</br>".$sql;
 		}
 		
 		$returnStaffsSearchResults = "";
@@ -68,7 +68,7 @@ switch($_REQUEST['searchType']){
 		
 		if(!$result)
 		{
-			echo "Problem in sql".$sql;
+			echo "<br><br>Problem in SQL</br>".$sql;
 		}
 		
 		$returnTypeSearchResults = "";
@@ -101,7 +101,7 @@ switch($_REQUEST['searchType']){
 		
 		if(!$result)
 		{
-			echo "Problem in sql".$sql;
+			echo "<br><br>Problem in SQL</br>".$sql;
 		}
 		
 		$returnTypeSearchResults = "";
@@ -129,7 +129,7 @@ switch($_REQUEST['searchType']){
 		
 		if(!$result)
 		{
-			echo "Problem in sql".$sql;
+			echo "<br><br>Problem in SQL</br>".$sql;
 		}
 		
 		$returnTypeSearchResults = "";
@@ -162,7 +162,7 @@ switch($_REQUEST['searchType']){
 
 		if(!$result)
 		{
-			echo "Problem in SQL".$sql;
+			echo "<br><br>Problem in SQL</br>".$sql;
 		}
 
 		$returnStatusSearchResults = "";
@@ -189,7 +189,7 @@ switch($_REQUEST['searchType']){
 		
 		if(!$result)
 		{
-			echo "Problem in sql".$sql;
+			echo "<br><br>Problem in SQL</br>".$sql;
 		}
 		
 	
@@ -217,7 +217,7 @@ switch($_REQUEST['searchType']){
 		
 		if(!$result)
 		{
-			echo "Problem in sql".$sql;
+			echo "<br><br>Problem in SQL</br>".$sql;
 		}
 		
 	
@@ -238,7 +238,7 @@ switch($_REQUEST['searchType']){
 		
 		if(!$result)
 		{
-			echo "Problem in sql".$sql;
+			echo "<br><br>Problem in SQL</br>".$sql;
 		}
 		
 	
