@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "admin";
+$password = "";
 
 //$username = "ims_web";
 //$password = "wzf0h1ooyuwLX5XJ";

@@ -10,9 +10,18 @@ function setHidden()
 include 'header.html';
 include 'connection.php';
 
-$itemID = $_REQUEST['id'];
+//$itemID = $_REQUEST['id'];
 $boolEdit = "true";
 //echo $itemID;
+
+if(isset($_GET['id']))
+	{
+				$itemID = $_GET['id'];  			
+	}
+else
+	{
+		$itemID = $_REQUEST['id'];
+	}
 
 $updateVM_SQL = "select I.itemID, I.productID, I.dateOfInitialization, I.description,I.purchasedDealer, I.projectedDateOfTermination," 
 				." I.status, I.remarks, V.hostname, V.dataCenter, V.OSInstalled, V.OSVersion, V.softwaresInstalled, V.SoftwareVersion,"
@@ -50,6 +59,18 @@ while($rowVM = mysql_fetch_array($resultUpdateVM))
 $sqlStatus = "SELECT id,name FROM status";
 $resultStatus = mysql_query($sqlStatus);
 
+?>
+
+<?php
+if(isset($_GET['qryMsg']))
+			{
+				$qryMsg = $_GET['qryMsg'];  
+				
+				if($qryMsg=='update_vm_saved')
+				{
+					echo '<div><label for="qryMsg">Record Successfully Edited !</label></div>';
+				}	
+			}	
 ?>
 
     <div class="col-lg-offset-2 col-lg-8 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">

@@ -6,9 +6,24 @@ function setHidden()
 
 </script>
 
+
+
 <?php include ( "header.html"); ?>
+		
+		<?php 
+			if(isset($_GET['qryMsg']))
+			{
+				$qryMsg = $_GET['qryMsg'];  
+				
+				if($qryMsg=='add_new_hw_saved')
+				{
+					echo '<div><label for="qryMsg">Successfully Saved !</label></div>';
+				}	
+			}	
+			?>
     <div class="col-lg-offset-2 col-lg-8 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
         <div class="row text-center page-header">
+		
             <h2>Add New Hardware</h2></div>
         <div class="row">
             <div class="col-lg-6 col-sm-12 col-xs-12">
@@ -108,7 +123,7 @@ function setHidden()
             </div>
         </div>
         <center>
-            <button type="submit" class="btn btn-primary actionButton" onClick = "setHidden();">Save</button>
+			<button type="submit" class="btn btn-primary actionButton" id="saveBtn" onClick = "setHidden();">Save</button>
             <button type="cancel" class="btn btn-default actionButton">Cancel</button>
 			<input type="hidden" id="hiddenField" name = "hiddenField" value="">
         </center>
