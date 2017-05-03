@@ -10,10 +10,19 @@ function setHidden()
 include 'header.html';
 include 'connection.php';
 
-$itemID = $_REQUEST['id'];
+//$itemID = $_REQUEST['id'];
 $boolEdit = "true";
 //echo $itemID;
 
+if(isset($_GET['id']))
+	{
+				$itemID = $_GET['id'];  			
+				
+	}
+	else
+	{
+		$itemID = $_REQUEST['id'];
+	}
 $updateHW_SQL = "select itemID, statusName, productID ,purchasedDealer,hardwareTypeID as hardwareTypeID, projectedDateOfTermination," 
 				." dateOfInitialization, remarks, statusID,macaddress ,type, itemName, firstName, lastName , staffID, assignedDate," 
 				." description from (select I.itemID, I.Status as statusID, status.Name as statusName,I.purchasedDealer,I.dateOfInitialization,"
@@ -59,6 +68,18 @@ $resultStatus = mysql_query($sqlStatus);
 $sqlStaffInfo = "SELECT id,firstName,lastName FROM staffs";
 $resultStaffInfo = mysql_query($sqlStaffInfo);
 
+?>
+
+<?php 
+			if(isset($_GET['qryMsg']))
+			{
+				$qryMsg = $_GET['qryMsg'];  
+				
+				if($qryMsg=='update_hw_saved')
+				{
+					echo '<div><label for="qryMsg">Record Successfully Edited !</label></div>';
+				}	
+			}	
 ?>
 
 <div class="col-lg-offset-2 col-lg-8 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">

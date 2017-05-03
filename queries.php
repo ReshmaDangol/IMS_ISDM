@@ -3,6 +3,8 @@
 include 'connection.php';
 include 'header.html';
 
+$qryMsg = '';
+
 switch($_REQUEST['hiddenField']){
 
 	case 'add_new_hw' :
@@ -85,7 +87,8 @@ switch($_REQUEST['hiddenField']){
 		if($flag)
 			{
 				mysql_query("commit", $link);
-				echo "All queries ran successfully";
+				$qryMsg = 'add_new_hw_saved' ;
+				header("Location: /add_new_hw.php?qryMsg=$qryMsg");				
 			}
 		else
 			{
@@ -170,6 +173,8 @@ switch($_REQUEST['hiddenField']){
 		if($flag)
 		{
 			mysql_query("commit" , $link);
+			$qryMsg = 'add_new_vm_saved';
+			header("Location: /add_new_vm.php?qryMsg=$qryMsg");		
 			echo "All queries ran successfully" ;
 		}
 		else
@@ -263,6 +268,8 @@ switch($_REQUEST['hiddenField']){
 		if($flag)
 			{
 				mysql_query("commit", $link);
+				$qryMsg = 'update_hw_saved';
+				header("Location: /update_hw.php?qryMsg=$qryMsg&id=$itemID");		
 				echo "All queries ran successfully";
 			}
 		else
@@ -344,6 +351,8 @@ switch($_REQUEST['hiddenField']){
 		if($flag)
 			{
 				mysql_query("commit", $link);
+				$qryMsg = 'update_vm_saved';
+				header("Location: /update_vm.php?qryMsg=$qryMsg&id=$itemID");
 				echo "All queries ran successfully";
 			}
 		else

@@ -2,12 +2,24 @@
 function setHidden()
 {
 	document.getElementById("hiddenField").value = "add_new_vm";
-	alert(document.getElementById("hiddenField").value);
+	
 };
 
 </script>
 
 <?php include ( "header.html"); ?>
+		<?php 
+			if(isset($_GET['qryMsg']))
+			{
+				$qryMsg = $_GET['qryMsg'];  
+				
+				if($qryMsg=='add_new_vm_saved')
+				{
+					echo '<div><label for="qryMsg">Successfully Saved !</label></div>';
+				}	
+			}	
+			?>
+			
     <div class="col-lg-offset-2 col-lg-8 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
         <div class="row text-center page-header">
             <h2>Add Virtual Machine</h2></div>
