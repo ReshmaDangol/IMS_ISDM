@@ -1,4 +1,4 @@
-<?php include ( "header.html"); ?>
+<?php include ( "header.php"); ?>
 <div class="col-lg-offset-2 col-lg-8 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
 <div class="row text-center page-header"><h2>Search Options</h2></div>
   <div class="row">

@@ -7,7 +7,7 @@ function setHidden()
 
 </script>
 
-<?php include ( "header.html"); ?>
+<?php include ( "header.php"); ?>
 		<?php 
 			if(isset($_GET['qryMsg']))
 			{

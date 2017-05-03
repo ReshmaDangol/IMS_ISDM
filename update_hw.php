@@ -7,7 +7,7 @@ function setHidden()
 
 <?php 
 
-include 'header.html';
+include 'header.php';
 include 'connection.php';
 
 //$itemID = $_REQUEST['id'];

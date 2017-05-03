@@ -1,0 +1,106 @@
+<?php
+ ob_start();
+ session_start();
+ if($_SESSION==null and basename($_SERVER['PHP_SELF'])!=='login.php')
+	 header( "Location: login.php" );
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="js/jquery-1.12.4.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap-theme.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js"></script>
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/morris.min.js"></script>
+    <link href="css/morris.css" rel="stylesheet" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
+	<script src="js/jquery.dataTables.min.js"></script>
+	<script src="js/dataTables.bootstrap.min.js"></script>
+		
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+    <script>
+        $(function () {
+			//$('.resultTable').DataTable();
+            $(".datepicker").datepicker();          
+			$(".staffInfo").click(function(){
+				$(".activeStaff").removeClass("activeStaff");
+				$(this).addClass("activeStaff");
+			});
+	
+        });
+
+		
+		var tabsFn = (function() {		  
+		  function init() {
+			setHeight();
+		  }
+		  
+		  function setHeight() {
+			var $tabPane = $('.tab-pane'),
+				tabsHeight = $('.nav-tabs').height();
+			
+			$tabPane.css({
+			//  height: tabsHeight
+			});
+		  }
+			
+		  $(init);
+		})();
+
+	$(document).ready(function(){
+	
+	});
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+    <div id="overlay">
+    
+
+
+    </div>
+    <div class="container-fluid">
+        <div class="row" >
+			<nav class="navbar " id="menu">
+			  <div class="container-fluid">
+			  <div class="row">
+				<div class="col-lg-offset-2 col-lg-8">
+					<div class="navbar-header">
+					<img src="images/logo.png" width=250 id="logo">
+					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					  </button>
+					  
+					</div>
+					<div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="index.php">Home</a></li>
+							<li class="active"><a href="search.php">Search</a></li>
+							<li class="active"><a href="add_new_hw.php">Add New Hardware</a></li>
+							<li class="active"><a href="add_new_vm.php">Add Virtual Machine</a></li>    
+							<li class="active"><a href="logout.php">Logout</a></li>
+						</ul>					  
+					</div>
+				</div><!-- /.navbar-collapse -->
+				</div>
+			  </div><!-- /.container-fluid -->
+			</nav>
+      
+        </div>
+
+        <div class="row">
